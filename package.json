@@ -1,0 +1,37 @@
+{
+  "name": "top-knights-travails",
+  "version": "1.0.0",
+  "description": "Find the shortest path for a knight between two given squares in a chess table",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Veregorn/TOP-Knights-Travails.git"
+  },
+  "keywords": [],
+  "author": "Veregorn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Veregorn/TOP-Knights-Travails/issues"
+  },
+  "homepage": "https://github.com/Veregorn/TOP-Knights-Travails#readme",
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "2.8.4",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
