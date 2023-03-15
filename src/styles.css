@@ -69,7 +69,7 @@ body {
 }
 
 #controls {
-    width: 50%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -138,26 +138,26 @@ button:hover {
 }
 
 #board {
-    width: 50%;
+    width: 55%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #chessBoard {
-    width: 27em;
-    height: 27em;
+    width: 720px;
+    height: 720px;
     background-color: #F2E9E1;
     color: #1C140D;
 }
 
 #chessBoard > div {
-    width: 3em;
-    height: 3em;
+    width: 80px;
+    height: 80px;
     float: left;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .head {
@@ -167,4 +167,9 @@ button:hover {
 
 .dark {
     background-color: #CBE86B;
+    font-size: 60px;
+}
+
+.light {
+    font-size: 60px;
 }
