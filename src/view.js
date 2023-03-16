@@ -1,6 +1,9 @@
 // Class that builds a user interface for our App
 export default class UIView {
     constructor() {
+        // Regular Expression for valid Square syntax
+        this.squareRegExp = /[A-H][1-8]/;
+
         // Create an HTML skeleton
         this.container = document.createElement("div");
         this.container.setAttribute("id", "container");
@@ -31,11 +34,21 @@ export default class UIView {
         this.start = document.createElement("div");
         this.start.setAttribute("id","start");
         this.start.classList.add("form-field");
+        this.startSpan = document.createElement("span");
+        this.startSpan.classList.add("error");
+        this.startSpan.setAttribute("id","startSpan");
+        this.startSpan.setAttribute("aria-live","polite");
         this.end = document.createElement("div");
         this.end.setAttribute("id","end");
         this.end.classList.add("form-field");
+        this.endSpan = document.createElement("span");
+        this.endSpan.classList.add("error");
+        this.endSpan.setAttribute("id","endSpan");
+        this.endSpan.setAttribute("aria-live","polite");
         this.form.appendChild(this.start);
+        this.form.appendChild(this.startSpan);
         this.form.appendChild(this.end);
+        this.form.appendChild(this.endSpan);
 
         this.startLabel = document.createElement("label");
         this.startLabel.setAttribute("for","startPos");
@@ -424,5 +437,26 @@ export default class UIView {
         this.headSquareH.classList.add("head");
         this.headSquareH.textContent = "H";
         this.chessBoard.appendChild(this.headSquareH);
+    }
+
+    checkPattern(input) {
+        return this.squareRegExp.test(input.value);
+    }
+
+    showError(e) {
+        if (e === this.startInput) {
+            if (this.startInput.validity.valueMissing) {
+                this.startSpan.textContent = "You need to enter an start square for the Knight";
+            } else if (!this.checkPattern(this.startInput)) {
+                this.startSpan.textContent = "Entered value needs to be a valid Chess Board Square";
+            }
+        }
+        if (e === this.startInput) {
+            if (this.endInput.validity.valueMissing) {
+                this.endSpan.textContent = "You need to enter an end square for the Knight";
+            } else if (!this.checkPattern(this.endInput)) {
+                this.endSpan.textContent = "Entered value needs to be a valid Chess Board Square";
+            }
+        }
     }
 }
