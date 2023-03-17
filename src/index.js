@@ -18,6 +18,8 @@ start = 0;
 end = 1;
 console.log(`The shortest path between square ${start} and square ${end} is:`);
 console.log(myChessBoard.knightShortestPath(start,end));
+console.log(String.fromCharCode(65));
+console.log(String.fromCharCode(65 + 1));
 
 // Let's declare an object of class 'UIView'
 const myUIView = new UIView();

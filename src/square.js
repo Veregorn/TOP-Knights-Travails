@@ -1,34 +1,34 @@
 // Class that represents a Square of a Chess board game
 export default class Square {
     
-    constructor(xCoord,yCoord,visited,parent) {
-        this.xCoord = xCoord;
-        this.yCoord = yCoord;
-        this.visited = visited; // Used to avoid infinite loops in a graph
-        this.parent = parent; // The breadcrumb to follow that path in 'shortestPath' method
+    constructor(xCoord,yCoord,visited = false,parent = null) {
+        this._xCoord = xCoord;
+        this._yCoord = yCoord;
+        this._visited = visited; // Used to avoid infinite loops in a graph
+        this._parent = parent; // The breadcrumb to follow that path in 'shortestPath' method
     }
 
-    getXCoord() {
-        return this.xCoord;
+    get xCoord() {
+        return this._xCoord;
     }
 
-    getYCoord() {
-        return this.yCoord;
+    get yCoord() {
+        return this._yCoord;
     }
 
-    isVisited() {
-        return this.visited;
+    get visited() {
+        return this._visited;
     }
 
-    getParent() {
-        return this.parent;
+    set visited(bool) {
+        this._visited = bool;
     }
 
-    setVisited(bool) {
-        this.visited = bool;
+    get parent() {
+        return this._parent;
     }
 
-    setParent(parent) {
-        this.parent = parent;
+    set parent(parent) {
+        this._parent = parent;
     }
 }

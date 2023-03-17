@@ -16,6 +16,7 @@
         "quotes": [
             "error",
             "double"
-        ]
+        ],
+        "no-underscore-dangle": "off"
     }
 }

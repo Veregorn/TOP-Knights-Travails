@@ -536,6 +536,12 @@ export default class UIView {
             this.startSpan.textContent = "";
             this.endSpan.textContent = "";
         });
+
+        // When user press 'Calc Path' button, we need to call 'knightShortestPath'
+        // method on the chessboard and paint the route in the board part
+        this.pathButton.addEventListener("click", () => {
+            
+        });
     }
 
     checkPattern(input) {
