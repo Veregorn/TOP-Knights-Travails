@@ -118,6 +118,16 @@ input[type=text]:focus {
     outline: none;
 }
 
+.error {
+    color: #ff0000;
+    font-size: 14px;
+}
+
+input[type=text]:invalid, .invalid {
+    border-top: 2px solid #ff0000 !important;
+    border-bottom: 2px solid #ff0000 !important;
+}
+
 #buttons {
     display: flex;
     justify-content: space-between;
@@ -165,11 +175,10 @@ button:hover {
     color: #F2E9E1;
 }
 
-.dark {
-    background-color: #CBE86B;
+.square {
     font-size: 60px;
 }
 
-.light {
-    font-size: 60px;
+.dark {
+    background-color: #CBE86B;
 }
