@@ -527,6 +527,15 @@ export default class UIView {
                 this.showError(this.endInput);
             }
         });
+
+        // When user press 'Clear' button, the board resets to its original state and the same for inputs
+        this.clearButton.addEventListener("click", () => {
+            this.clearSquares();
+            this.startInput.value = "";
+            this.endInput.value = "";
+            this.startSpan.textContent = "";
+            this.endSpan.textContent = "";
+        });
     }
 
     checkPattern(input) {
@@ -552,6 +561,7 @@ export default class UIView {
         }
     }
 
+    // eslint-disable-next-line class-methods-use-this
     clearSquares() {
         const squares = document.querySelectorAll(".square");
         for (let i = 0; i < squares.length; i += 1) {
