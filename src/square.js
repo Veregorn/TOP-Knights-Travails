@@ -31,4 +31,11 @@ export default class Square {
     set parent(parent) {
         this._parent = parent;
     }
+
+    // This method sets 'visited' and 'parent' attributes to 'false' and 'null'
+    // This is a Square Reset
+    clean() {
+        this._parent = null;
+        this._visited = false;
+    }
 }

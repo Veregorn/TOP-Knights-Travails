@@ -39,8 +39,7 @@ export default class ChessBoard {
     resetBoard() {
         // eslint-disable-next-line no-restricted-syntax
         for (const square of this._board.values()) {
-            square.visited = false;
-            square.parent = null;
+            square.clean();
         }
     }
 
