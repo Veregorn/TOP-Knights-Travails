@@ -540,7 +540,7 @@ export default class UIView {
         // When user press 'Calc Path' button, we need to call 'knightShortestPath'
         // method on the chessboard and paint the route in the board part
         this.pathButton.addEventListener("click", () => {
-            
+
         });
     }
 
@@ -573,5 +573,13 @@ export default class UIView {
         for (let i = 0; i < squares.length; i += 1) {
             squares[i].textContent = "";
         }
+    }
+
+    // Called when button 'Calc Path' is pressed. Receives an array with the squares the knights
+    // have to move between
+    displayPath(path) {
+        // First of all, it clears the board game
+        this.clearSquares();
+
     }
 }

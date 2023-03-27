@@ -103,4 +103,17 @@ export default class KnightsController {
 
         return path;
     }
+
+    // Method that translate path array from square numbers to coordinates A1..H8
+    translatePath(path) {
+        const outputArr = [];
+
+        path.forEach(squareNum => {
+            // We need to pass from one notation to another
+            // With 'fromCharCode' from 65 we obtain letters starting in A
+            outputArr.push(String.fromCharCode(65 + this._chessBoard.getSquare(squareNum).xCoord) + (this._chessBoard.getSquare(squareNum).yCoord + 1).toString());
+        });
+
+        return outputArr;
+    }
 }
