@@ -182,3 +182,7 @@ button:hover {
 .dark {
     background-color: #CBE86B;
 }
+
+.final {
+    color: #ff0000;
+}

@@ -549,6 +549,9 @@ export default class UIView {
     }
 
     showError(e) {
+        // Let's return a bool with the status of the inputs to be used when 'Calc Path' button is pressed
+        let validInputs = true;
+
         if (e === this.startInput) {
             this.startInput.classList.add("invalid");
             if (this.startInput.validity.valueMissing) {
@@ -556,7 +559,9 @@ export default class UIView {
             } else if (!this.checkPattern(this.startInput)) {
                 this.startSpan.textContent = "Entered value needs to be a valid Chess Board Square";
             }
+            validInputs = false;
         }
+        
         if (e === this.endInput) {
             this.endInput.classList.add("invalid");
             if (this.endInput.validity.valueMissing) {
@@ -564,7 +569,10 @@ export default class UIView {
             } else if (!this.checkPattern(this.endInput)) {
                 this.endSpan.textContent = "Entered value needs to be a valid Chess Board Square";
             }
+            validInputs = false;
         }
+
+        return validInputs;
     }
 
     // eslint-disable-next-line class-methods-use-this
@@ -572,14 +580,26 @@ export default class UIView {
         const squares = document.querySelectorAll(".square");
         for (let i = 0; i < squares.length; i += 1) {
             squares[i].textContent = "";
+            squares[i].classList.remove("final");
         }
     }
 
     // Called when button 'Calc Path' is pressed. Receives an array with the squares the knights
     // have to move between
+    // eslint-disable-next-line class-methods-use-this
     displayPath(path) {
-        // First of all, it clears the board game
-        this.clearSquares();
+        // We place a black knight on start square
+        const firstDomElement = document.getElementById(path[0]);
+        firstDomElement.innerHTML = "&#9822;";
 
+        for (let i = 1; i < path.length - 1; i += 1) {
+            const domElement = document.getElementById(path[i]);
+            domElement.textContent = i;
+        }
+
+        // We place a red knight on end square
+        const lastDomElement = document.getElementById(path[path.length - 1]);
+        lastDomElement.innerHTML = path.length - 1;
+        lastDomElement.classList.add("final");
     }
 }

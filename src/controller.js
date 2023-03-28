@@ -116,4 +116,8 @@ export default class KnightsController {
 
         return outputArr;
     }
+
+    paintPath(path) {
+        this._ui.displayPath(path);
+    }
 }
