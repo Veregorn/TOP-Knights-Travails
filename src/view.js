@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable class-methods-use-this */
 // Class that builds a user interface for our App
 export default class UIView {
     constructor() {
@@ -542,6 +544,34 @@ export default class UIView {
         this.pathButton.addEventListener("click", () => {
 
         });
+    }
+
+    // Create an element with optional ids and class
+    createElement(tag, id, className) {
+        const element = document.createElement(tag);
+        
+        if (id) {
+            element.setAttribute("id",id);
+        }
+        
+        if (className) {
+            element.classList.add(className);
+        }
+
+        return element;
+    }
+
+    getElement(selector) {
+        const element = document.querySelector(selector);
+
+        return element;
+    }
+
+    displayBoard(board) {
+        for (const [num, square] of board) {
+            const div = this.createElement("div", num.toString(), "square");
+            div.setAttribute("name",)
+        }
     }
 
     checkPattern(input) {

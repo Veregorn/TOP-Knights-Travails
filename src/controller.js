@@ -28,28 +28,28 @@ export default class KnightsController {
 
     // Return 'true' if a knight can move from start to end squares
     isValidKnightMove(start,end) {
-        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).xCoord + 1) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord + 2)) {
+        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).incDecXcoord(1)) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord + 2)) {
             return true;
         }
-        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).xCoord + 1) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord - 2)) {
+        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).incDecXcoord(1)) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord - 2)) {
             return true;
         }
-        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).xCoord + 2) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord + 1)) {
+        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).incDecXcoord(2)) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord + 1)) {
             return true;
         }
-        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).xCoord + 2) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord - 1)) {
+        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).incDecXcoord(2)) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord - 1)) {
             return true;
         }
-        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).xCoord - 1) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord + 2)) {
+        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).incDecXcoord(-1)) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord + 2)) {
             return true;
         }
-        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).xCoord - 1) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord - 2)) {
+        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).incDecXcoord(-1)) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord - 2)) {
             return true;
         }
-        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).xCoord - 2) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord + 1)) {
+        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).incDecXcoord(-2)) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord + 1)) {
             return true;
         }
-        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).xCoord - 2) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord - 1)) {
+        if ((this._chessBoard.getSquare(end).xCoord === this._chessBoard.getSquare(start).incDecXcoord(-2)) && (this._chessBoard.getSquare(end).yCoord === this._chessBoard.getSquare(start).yCoord - 1)) {
             return true;
         }
     
@@ -103,15 +103,14 @@ export default class KnightsController {
 
         return path;
     }
-
+    
     // Method that translate path array from square numbers to coordinates A1..H8
     translatePath(path) {
         const outputArr = [];
 
         path.forEach(squareNum => {
             // We need to pass from one notation to another
-            // With 'fromCharCode' from 65 we obtain letters starting in A
-            outputArr.push(String.fromCharCode(65 + this._chessBoard.getSquare(squareNum).xCoord) + (this._chessBoard.getSquare(squareNum).yCoord + 1).toString());
+            outputArr.push(this._chessBoard.getSquare(squareNum).xCoord + this._chessBoard.getSquare(squareNum).yCoord.toString());
         });
 
         return outputArr;

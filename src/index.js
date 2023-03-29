@@ -7,7 +7,7 @@ const myKnightsController = new KnightsController();
 // Let's try 'shortestPath' method
 let start = 49;
 let end = 37;
-let path = myKnightsController.translatePath(myKnightsController.knightShortestPath(start,end));
+const path = myKnightsController.translatePath(myKnightsController.knightShortestPath(start,end));
 myKnightsController.paintPath(path);
 start = 12;
 end = 63;

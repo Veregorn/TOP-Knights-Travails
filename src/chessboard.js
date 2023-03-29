@@ -12,7 +12,8 @@ export default class ChessBoard {
 
         for (let i = 0; i < 8; i += 1) {
             for (let j = 0; j < 8; j += 1) {
-                this._board.set(n, new Square(j,i));
+                // (j + 10).toString(36) converts from 0-9 to A-H
+                this._board.set(n, new Square((j + 10).toString(36).toUpperCase(),i + 1));
                 n += 1;
             }
         }
