@@ -12,6 +12,10 @@ export default class Square {
         return this._xCoord;
     }
 
+    get numericXcoord() {
+        return parseInt(this._xCoord,36) - 9;
+    }
+
     get yCoord() {
         return this._yCoord;
     }

@@ -570,7 +570,8 @@ export default class UIView {
     displayBoard(board) {
         for (const [num, square] of board) {
             const div = this.createElement("div", num.toString(), "square");
-            div.setAttribute("name",)
+            div.setAttribute("name",square.xCoord + square.yCoord.toString());
+            
         }
     }
 
