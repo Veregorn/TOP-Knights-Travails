@@ -19,6 +19,10 @@ export default class ChessBoard {
         }
     }
 
+    get board() {
+        return this._board;
+    }
+
     // Put all the chess board squares as not visited and without parents
     resetBoard() {
         // eslint-disable-next-line no-restricted-syntax

@@ -7,6 +7,7 @@ export default class KnightsController {
     constructor() {
         this._chessBoard = new ChessBoard();
         this._ui = new UIView();
+        this._ui.displayBoard(this._chessBoard.board);
         // Define an adjacency matrix 64x64 where '1' represents that there is an edge from vertex 'i' to vertex 'j'
         // '0' represents  that there is no edge
         this._knightsAdjMatrix = new Array(64);
