@@ -27,7 +27,7 @@ export default class KnightsController {
         }
 
         // Bindings to handle event listeners from the view
-        this._ui.bindCalcPath(this.handleCalcPath);
+        this._ui.bindCalcPath(this.handleCalcPath.bind(this));
     }
 
     // Return 'true' if a knight can move from start to end squares
@@ -107,25 +107,13 @@ export default class KnightsController {
 
         return path;
     }
-    
-    // Method that translate path array from square numbers to coordinates A1..H8
-    translatePath(path) {
-        const outputArr = [];
-
-        path.forEach(squareNum => {
-            // We need to pass from one notation to another
-            outputArr.push(this._chessBoard.getSquare(squareNum).xCoord + this._chessBoard.getSquare(squareNum).yCoord.toString());
-        });
-
-        return outputArr;
-    }
 
     paintPath(path) {
         this._ui.displayPath(path);
     }
 
     // Handler for the event 'Calc Path'
-    handleCalcPath = (start,end) => {
+    handleCalcPath(start,end) {
         
         // Translate start and end from A1 format to numeric ID format
         const path = this.knightShortestPath(this._chessBoard.getSquareId(start),this._chessBoard.getSquareId(end));
