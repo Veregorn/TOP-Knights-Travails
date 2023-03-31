@@ -35,4 +35,18 @@ export default class ChessBoard {
     getSquare(num) {
         return this._board.get(num);
     }
+
+    // Return Map key from a known value
+    // eslint-disable-next-line consistent-return
+    getSquareId(coord) {
+
+        // Iterate the Map until find coord
+        // eslint-disable-next-line no-restricted-syntax
+        for (const [key,value] of this._board) {
+            if (value.stringifiedCoords === coord) {
+                return key;
+            }
+        }
+
+    }
 }

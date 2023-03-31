@@ -126,7 +126,10 @@ export default class KnightsController {
 
     // Handler for the event 'Calc Path'
     handleCalcPath = (start,end) => {
-        const path = this.knightShortestPath(start,end);
+        
+        // Translate start and end from A1 format to numeric ID format
+        const path = this.knightShortestPath(this._chessBoard.getSquareId(start),this._chessBoard.getSquareId(end));
         this.paintPath(path);
+
     }
 }

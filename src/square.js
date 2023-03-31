@@ -36,6 +36,10 @@ export default class Square {
         this._parent = parent;
     }
 
+    get stringifiedCoords() {
+        return this.xCoord + this.yCoord.toString();
+    }
+
     // This method sets 'visited' and 'parent' attributes to 'false' and 'null'
     // This is a Square Reset
     clean() {
