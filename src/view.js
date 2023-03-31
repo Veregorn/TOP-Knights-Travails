@@ -68,6 +68,7 @@ export default class UIView {
 
         this.pathButton = this.createElement("button","pathButton");
         this.pathButton.setAttribute("type","button");
+        this.pathButton.setAttribute("disabled","true");
         this.pathButton.textContent = "Calc Path";
         this.clearButton = this.createElement("button","clearButton");
         this.clearButton.setAttribute("type","button");
@@ -91,12 +92,19 @@ export default class UIView {
 
         for (let i = 1; i < 9; i += 1) {       
             const head = this.createElement("div",null,"head");
+            head.classList.add("square");
             head.textContent = i;
             this.yHeader.appendChild(head);
         }
 
+        // Append an empty 'div' to 'xHeader' div
+        const emptyHeadSquare = this.createElement("div",null,"head");
+        emptyHeadSquare.classList.add("square");
+        this.xHeader.appendChild(emptyHeadSquare);
+        
         for (let i = 10; i < 18; i += 1) {       
             const head = this.createElement("div",null,"head");
+            head.classList.add("square");
             head.textContent = i.toString(36).toUpperCase();
             this.xHeader.appendChild(head);
         }
@@ -104,29 +112,48 @@ export default class UIView {
 
         // Declare Event Listeners for inputs and buttons
         this.startInput.addEventListener("keyup", () => {
+            
             // When user leaves the input, we check if the field is valid
             if (this.startInput.validity.valid && this.checkPattern(this.startInput)) {
+                
                 // In case there is an error message visible and the field is valid yet, remove the error message
                 this.startSpan.textContent = "";
                 this.startInput.classList.remove("invalid");
+                
                 // Now we need to place the knight
-                const square = document.getElementById(this.startInput.value);
+                const square = document.getElementsByName(this.startInput.value);
                 this.clearSquares();
-                square.innerHTML = "&#9822;";
+                square[0].innerHTML = "&#9822;";
+
+                // If endInput is valid too, then we need to enable 'Calc Path' button
+                if (this.endInput.validity.valid && this.checkPattern(this.endInput)) {
+                    this.pathButton.removeAttribute("disabled");
+                };
+
             } else {
                 this.showError(this.startInput);
             }
+
         });
 
         this.endInput.addEventListener("keyup", () => {
+            
             // When user leaves the input, we check if the field is valid
             if (this.endInput.validity.valid && this.checkPattern(this.endInput)) {
+                
                 // In case there is an error message visible and the field is valid yet, remove the error message
                 this.endSpan.textContent = "";
                 this.endInput.classList.remove("invalid");
+
+                // If startInput is valid too, then we need to enable 'Calc Path' button
+                if (this.startInput.validity.valid && this.checkPattern(this.startInput)) {
+                    this.pathButton.removeAttribute("disabled");
+                };
+
             } else {
                 this.showError(this.endInput);
             }
+
         });
 
         // When user press 'Clear' button, the board resets to its original state and the same for inputs
@@ -136,12 +163,6 @@ export default class UIView {
             this.endInput.value = "";
             this.startSpan.textContent = "";
             this.endSpan.textContent = "";
-        });
-
-        // When user press 'Calc Path' button, we need to call 'knightShortestPath'
-        // method on the chessboard and paint the route in the board part
-        this.pathButton.addEventListener("click", () => {
-
         });
     }
 
@@ -217,10 +238,16 @@ export default class UIView {
 
     // eslint-disable-next-line class-methods-use-this
     clearSquares() {
-        const squares = document.querySelectorAll(".square");
-        for (let i = 0; i < squares.length; i += 1) {
-            squares[i].textContent = "";
-            squares[i].classList.remove("final");
+        const darkSquares = document.querySelectorAll(".dark");
+        for (let i = 0; i < darkSquares.length; i += 1) {
+            darkSquares[i].textContent = "";
+            darkSquares[i].classList.remove("final");
+        }
+
+        const lightSquares = document.querySelectorAll(".light");
+        for (let i = 0; i < lightSquares.length; i += 1) {
+            lightSquares[i].textContent = "";
+            lightSquares[i].classList.remove("final");
         }
     }
 
@@ -241,5 +268,14 @@ export default class UIView {
         const lastDomElement = document.getElementById(path[path.length - 1]);
         lastDomElement.innerHTML = path.length - 1;
         lastDomElement.classList.add("final");
+    }
+
+    // We need an Event Listener for 'Calc Path' button
+    bindCalcPath(handler) {
+        this.pathButton.addEventListener("click", () => {
+            // This handler needs to be a method in the controller
+            // See Controller constructor
+            handler(this.startInput.value,this.endInput.value);
+        });
     }
 }

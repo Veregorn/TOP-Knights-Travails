@@ -25,6 +25,9 @@ export default class KnightsController {
                 }
             }
         }
+
+        // Bindings to handle event listeners from the view
+        this._ui.bindCalcPath(this.handleCalcPath);
     }
 
     // Return 'true' if a knight can move from start to end squares
@@ -119,5 +122,11 @@ export default class KnightsController {
 
     paintPath(path) {
         this._ui.displayPath(path);
+    }
+
+    // Handler for the event 'Calc Path'
+    handleCalcPath = (start,end) => {
+        const path = this.knightShortestPath(start,end);
+        this.paintPath(path);
     }
 }

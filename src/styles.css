@@ -147,27 +147,48 @@ button:hover {
     opacity: 0.8;
 }
 
-#board {
-    width: 55%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#chessBoard {
-    width: 720px;
-    height: 720px;
-    background-color: #F2E9E1;
+#pathButton:disabled {
+    opacity: 0.5;
     color: #1C140D;
 }
 
-#chessBoard > div {
-    width: 80px;
-    height: 80px;
-    float: left;
+#board {
+    width: 55%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#topBoard {
+    display: flex;
+}
+
+#yHeader {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#chessBoard {
+    width: 640px;
+    height: 640px;
+    background-color: #F2E9E1;
+    color: #1C140D;
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+#chessBoard > div {
+    display: flex;
+    font-size: 60px;
+}
+
+#bottomBoard {
+    display: flex;
+}
+
+#xHeader {
+    display: flex;
 }
 
 .head {
@@ -176,7 +197,11 @@ button:hover {
 }
 
 .square {
-    font-size: 60px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dark {
